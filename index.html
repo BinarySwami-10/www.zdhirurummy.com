@@ -13,24 +13,68 @@
 	.nav-item {
 		vertical-align: middle !important;
 		display: flex;
-		align-items:center;
-		justify-content:center;
+		flex-direction: column;
+		/*align-items:center;*/
+		/*justify-content:center;*/
+		padding: 0 2em ;
 
 
 	}
+
 	.navbar .nav-item a{
 		color: #fff !important;
 		font-size: 1.5em;
-
+		line-height: 1em;
+		background-color: #f001;
+		box-shadow: 0 0 0.1em #f008;
+		border-radius: 0.25em;
+		/*border-right: solid white 1px;*/
 		/*padding: auto;*/
-	}	
+	}
+	#liveplayers{
+		font-size: 1em;
+		max-width: 6em;
+		background-color: unset;
+		float: right;
+		position: relative;
+		left: 150%;
+	}
+
+	@media(max-width: 768px){
+		.nav-item{
+			padding: 0;
+		}
+		.navbar .nav-item a{
+			margin: 0.5em 0;
+		}
+		.#navbarNav li{
+
+			margin-right: auto;
+		}
+
+		#liveplayers{
+			font-size: 1em;
+			max-width: 6em;
+			background-color: unset;
+			float: right;
+			position: relative;
+			left: unset;
+		}
+	}
+
 	.navbar .navbar-brand{
 		color: #fff !important;
 
 	}
-	#liveplayers{
-		font-size: 1em;
+	.navbar-toggler-icon{
+		fill: #0f0;
+		background-color: #fff;
+		border-radius: 0.25em;
 	}
+
+
+
+
 
 
 	#featuresColumn{
@@ -46,6 +90,25 @@
 		float: left;
 		max-height: 6em;
 	}
+	#featuresColumn .mainlp_option_list{
+		line-height: 1.2em;
+		font-size: 0.75em;
+		float: left;
+	}
+
+	@media(max-width: 768px){
+		#featuresColumn >div{
+			padding: 0.25em 0.25em;
+			float: left;
+		}
+		#featuresColumn img{
+			max-height: 3em;
+		}
+		#featuresColumn h3{
+			font-size: 1em;
+		}
+	}
+
 	.hero-slider{
 		max-height: 66vh;
 		overflow: hidden;
@@ -54,13 +117,19 @@
 		width: 100%;
 		max-height: 100vh;
 	}
+	@media(max-width: 768px){
+		.carousel-item img{
+			height: 40vh;
+		}
+
+	}
 </style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light ">
 		<logo> <img src="./logo.png"></logo>
 		<a class="navbar-brand" href="#">RummyPros.com</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse " id="navbarNav">
@@ -69,10 +138,10 @@
 					<a class="nav-link" href="#">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Features</a>
+					<a class="nav-link" href="#">Login/Signup</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Pricing</a>
+					<a class="nav-link" href="#">Withdraw</a>
 				</li>
 				<li class="nav-item ">
 					<a id="liveplayers" class="nav-link btn btn-success p-0 my-auto animate__animated animate__fadeIn" href="#" data-basetext="Live "> </a>
@@ -112,7 +181,7 @@
 
 	<section>
 		<div class="row px-lg-2" id="featuresColumn">
-			<div class="col-4">
+			<div class="col-6 col-lg-4">
 				<img src="./assets/poker-table.png">
 				<div class="media-body">
 					<h3 class="media-heading">Play Favourite Rummy Games</h3>
@@ -125,7 +194,7 @@
 			</div>
 			
 
-			<div class="col-4">
+			<div class="col-6 col-lg-4">
 				<img src="./assets/icon-eye.png">
 				<div class="media-body">
 					<h3 class="media-heading">World Class Security</h3>
@@ -138,7 +207,7 @@
 
 			</div>
 
-			<div class="col-4">
+			<div class="col-6 col-lg-4">
 				<img src="./assets/2108629.png">
 				<div class="media-body">
 					<h3 class="media-heading">The Best Rummy Experience</h3>
@@ -151,7 +220,7 @@
 			</div>
 			
 
-			<div class="col-4">
+			<div class="col-6 col-lg-4">
 				<img src="./assets/icon-clover.png">
 				<div class="media-body">
 					<h3 class="media-heading">Responsible Gaming</h3>
@@ -163,7 +232,7 @@
 				</div>
 			</div>
 
-			<div class="col-4">
+			<div class="col-6 col-lg-4">
 				<img src="./assets/2108623.png">
 				<div class="media-body">
 					<h3 class="media-heading">Best Rummy App For Rewards</h3>
@@ -176,7 +245,7 @@
 
 			</div>
 
-			<div class="col-4">
+			<div class="col-6 col-lg-4">
 				<img src="./assets/2130085.png">
 				<div class="media-body">
 					<h3 class="media-heading">The "FASTEST" Withdrawals</h3>
@@ -203,6 +272,15 @@
 		}
 		update_live_player_count()
 		setInterval(update_live_player_count, 2000)
+	</script>
+	<script type="text/javascript">
+		$(".row").addClass('mx-0')
+		isMobile=$( window ).width()/$( window ).height()<1 ? true :false
+		if (isMobile){
+
+		}
+
+
 	</script>
 
 	<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
